@@ -23,5 +23,6 @@ func main() {
 	r.GET("/items", itemController.FindAll)
 	// idはパスパラメーターなので「:」をつける
 	r.GET("/items/:id", itemController.FindById)
+	r.POST("/items", itemController.Create)
 	r.Run("localhost:8080")
 }
