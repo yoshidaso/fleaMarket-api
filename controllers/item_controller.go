@@ -115,5 +115,5 @@ func (c *ItemController) Delete(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusNoContent, nil)
+	ctx.Status(http.StatusOK)
 }
