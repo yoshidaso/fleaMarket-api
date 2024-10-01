@@ -2,6 +2,7 @@ package main
 
 import (
 	"gin-freemarket/controllers"
+	"gin-freemarket/infra"
 	"gin-freemarket/models"
 	"gin-freemarket/repositories"
 	"gin-freemarket/services"
@@ -9,6 +10,7 @@ import (
 )
 
 func main() {
+	infra.Initialize()
 	items := []models.Item{
 		{ID: 1, Name: "商品1", Price: 1000, Description: "説明1", SoldOut: false},
 		{ID: 2, Name: "商品2", Price: 2000, Description: "説明2", SoldOut: true},
