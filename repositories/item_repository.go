@@ -94,13 +94,23 @@ func (r *ItemRepository) Create(newItem models.Item) (*models.Item, error) {
 }
 
 func (r ItemRepository) Update(updateItem models.Item) (*models.Item, error) {
-	//TODO implement me
-	panic("implement me")
+	result := r.db.Save(&updateItem)
+	if result.Error != nil {
+		return nil, result.Error
+	}
+	return &updateItem, nil
 }
 
-func (i ItemRepository) Delete(itemId uint) error {
-	//TODO implement me
-	panic("implement me")
+func (r ItemRepository) Delete(itemId uint) error {
+	deletedItem, err := r.FindById(itemId)
+	if err != nil {
+		return err
+	}
+	result := r.db.Delete(&deletedItem)
+	if result.Error != nil {
+		return result.Error
+	}
+	return nil
 }
 
 func NewItemRepository(db *gorm.DB) IItemRepository {
